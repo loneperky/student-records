@@ -1,0 +1,100 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.registration{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration h1{
+  text-align: center;
+  font-size: 2em;
+}
+
+input{
+  display: block;
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid darkgray;
+  outline: none;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
+.apple{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20rem;
+  background-color: black;
+  padding: 0.2rem 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.facebook{
+  display: flex;
+  cursor: pointer;
+  justify-content: space-around;
+  align-items: center;
+  width: 20rem;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0.2rem 0;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+.google{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  width: 20rem;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0.2rem 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.apple p{
+  color: white;
+  font-size: 0.8em;
+}
+.facebook p{
+  font-size: 0.8em;
+}
+.google p{
+  color: black;
+  font-size: 0.8em;
+}
+.btnn{
+  width: 20rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  background-color: blue;
+  color: white;
+}
+
+form a{
+  color: red;
+}
+form a:hover{
+  text-decoration: underline;
+}
+
+.social-login button{
+  margin-top: 1rem;
+}

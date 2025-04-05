@@ -1,0 +1,168 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Nav Menu Component*/
+
+.head{
+  text-align: center;
+  padding: 0.5rem 0;
+  background-color: rgba(128, 0, 128, 0.797);
+  color: #fff;
+  font-weight: bolder;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 5rem;
+  transition: ease-in-out all 2s;
+  background-color: #b9ece521;
+  
+}
+nav .logo{
+  color: rgb(0, 0, 220);
+  font-family: sans-serif;
+}
+nav ul{
+  display: flex;
+  gap: 1.5rem;
+}
+nav ul li{
+  list-style-type: none;
+}
+nav a{
+  text-decoration: none;
+  font-weight: bolder;
+  color: rgb(0, 0, 107);
+  font-size: 1.1em;
+}
+nav a:hover{
+  color: rgba(23, 4, 233, 0.893);
+}
+nav button{
+  background-color: blue;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+.menu{
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  cursor: pointer;
+}
+.menu .bar{
+  width: 1.3rem;
+  border: 1px solid black;
+}
+
+
+.bar:nth-child(1){
+  transform-origin: top left;
+}
+.bar:nth-child(2){
+  transform-origin: center;
+  opacity: 1;
+}
+.bar:nth-child(3){
+  transform-origin: bottom left;
+}
+
+.dropdown{
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.955);
+}
+.dropdown ul{
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown li{
+list-style-type: none;
+line-height: 2rem;
+border-bottom: 1.5px solid black;
+padding: 0.5rem 5rem;
+}
+.visited{
+  display: block;
+}
+
+.hidden{
+  display: none;
+}
+
+button{
+  padding: 0.5rem 1rem;
+}
+
+.dropdown a{
+  text-decoration: none;
+  color: rgb(1, 1, 108);
+  display: block;
+  font-weight: bolder;
+  font-size: 1.1em
+}
+.dropdown a:hover{
+  color: rgba(23, 4, 233, 0.893);
+ 
+}
+
+.error{
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+.error h1{
+  font-size: 5em;
+}
+
+/* footer{
+  background-color: blue;
+  display: flex;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  bottom: 0;
+  padding: 0.5rem 0;
+  color: white;
+} */
+
+@media screen and (min-width:901px) {
+  .menu{
+    display: none;
+  }
+  .dropdown{
+    display: none;
+  }
+}
+@media screen and (max-width:900px) {
+  nav{
+    padding: 0.7rem 1rem;
+    justify-content: space-between;
+  }
+  .menu-items{
+    display: none;
+  }
+  
+  nav img{
+    display: none;
+  }
+  .dropdown li{
+  padding: 0.5rem 1rem;
+  }
+  .logbtn{
+    display: none;
+  }
+}

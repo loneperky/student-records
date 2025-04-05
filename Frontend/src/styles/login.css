@@ -1,0 +1,136 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.login-overview{
+background-image: url("/Images/maingate.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+display: flex;
+padding: 1rem 0;
+justify-content: center;
+align-items: center;
+}
+
+.logins{
+  background-color: #00000085;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.172);
+}
+
+.logins h3{
+  font-size: 1.5em;
+  color: rgb(253, 253, 253);
+  padding: 0.7rem 0;
+  font-family: sans-serif;
+}
+
+.logins p{
+  font-size: 0.8em;
+  font-weight: bold;
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+}
+label{
+  color: white;
+}
+
+.logins .text{
+  height: 2rem;
+  display: block;
+  width: 25rem;
+  border: 1px solid rgb(255, 0, 204);
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 0 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.radio{
+  width: 0.9rem;
+  margin: 0.5rem;
+}
+.box{
+  margin: 0.5rem;
+  width: 1.5rem;
+  height: 1rem;
+}
+
+
+.logins button{
+  border: none;
+  width: 25rem;
+  border-radius: 0.5rem;
+  background-color: blue;
+  color: white;
+  margin-top: 1rem;
+  cursor: pointer;
+  height: 2.5rem;
+}
+.logins button:hover{
+  opacity: 0.7;
+}
+
+
+.gender,.age{
+  font-size: 1em;
+  font-weight: bold;
+  font-family: sans-serif;
+
+}
+.age{
+margin: 3rem 0;
+}
+
+@media screen and (max-width:800px) {
+ 
+  .logins{
+    padding: 1rem;
+  }
+
+  .logins .text{
+    margin: 1rem;
+    width: 23rem;
+  }
+
+  .logins h3{
+    text-align: center;
+  }
+  .gender{
+    font-size: 1em;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+
+  .login-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .logins p{
+    font-size: 1em;
+  }
+
+  .box,.radio{
+    margin-left: 0.8rem;
+  }
+  .logins button{
+    width: 23rem;
+    margin: 1rem;
+  }
+
+  
+
+}
+/*
+signup component styling starts from here
+*/

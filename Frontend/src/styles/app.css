@@ -1,0 +1,38 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --background-colour: #fff;
+  --text-color-black: black;
+  --primary-color: blue;
+}
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust width */
+}
+
+/* Background color of the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray */
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: blue; /* Darker gray */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Even darker */
+}
+.overall-section{
+  background-image: url("/Images/uniben-logo.jpg");
+ z-index: 9;
+}
