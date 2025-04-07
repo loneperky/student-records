@@ -3,7 +3,36 @@
   margin: 0;
   box-sizing: border-box;
 }
-table,thead,tbody,th,tr{
-  display: grid;
-  border: 2px solid black;
+
+.table-overview{
+display: flex;
+align-items: center;
+justify-content: center;
 }
+.table-overview h2{
+  text-align: center;
+  font-family: monospace;
+  font-size: 2em;
+  padding: 1rem 0;
+}
+
+.table-overview p{
+  padding: 0.5rem 1rem;
+  
+}
+
+table{
+  border: 1px solid rgba(0, 0, 0, 0.741);
+  border-radius: 0.5rem;
+}
+th,td{
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+}
+th{
+  padding: 0.5rem;
+}
+td{
+  padding: 0.5rem;
+}
+

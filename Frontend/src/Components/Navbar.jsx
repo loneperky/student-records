@@ -31,13 +31,13 @@ function Navbar(){
        <NavLink to="/">Home</NavLink> 
       </li>
      <li>
-       <NavLink to="/">Check your Name</NavLink> 
+       <NavLink to="/check/students">Check your Name</NavLink> 
       </li>
       <li>
         <a href="https://wa.me/2349126785031?text=I%20Want%20To%20Hire%20A%20Developer" target='_blank'>Hire a Developer</a>
       </li>  
     </ul>
-    <NavLink to="/register"><button className='logbtn' >Register</button> </NavLink>
+  
       
           <div className={ "menu"} onClick={Menu}>
             <div className="bar bar1"></div>
@@ -53,10 +53,7 @@ function Navbar(){
               </li>
              
               <li>
-                <Link to="/k"  onClick={Menu}>Check your Name</Link>
-              </li>
-              <li>
-                <Link to="/register"  onClick={Menu}>Register</Link>
+                <Link to="/check/students"  onClick={Menu}>Check your Name</Link>
               </li>
               <li>
               <a href="https://wa.me/2349126785031?text=I%20Want%20to%20Hire%20A%20Developer" target='_blank'>Hire a Developer</a>

@@ -14,12 +14,11 @@ function App() {
     
     <Router>
       <Navbar />
-      {/* <SpeedInsights /> */}
       {/* <Analytics /> */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/check/name" element={<StudentRecord/>} />
-        <Route path="/register" element={ <Login /> }/>
+        {/* <Route path="/" element={<HomePage />} /> */}
+        <Route path="/check/students" element={<StudentRecord/>} />
+        <Route path="/" element={ <Login /> }/>
         <Route path="/*" element={<ErrorPage />}/>
       </Routes>
     </Router>

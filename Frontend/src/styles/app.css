@@ -32,7 +32,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Even darker */
 }
-.overall-section{
-  background-image: url("/Images/uniben-logo.jpg");
- z-index: 9;
+.footer{
+  background-color: rgb(0, 0, 35);
+  text-align: center;
+  padding: 0.8rem 0;
+  color: #fefefe;
 }

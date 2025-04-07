@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "../styles/login.css";
+import Footer from "../Components/footer";
 import axios from "axios";
 
 const Login = () => {
-  const [fullName, SetFullName] = useState("");
-  const [matNo, setMatNo] = useState("");
-  const [dept, SetDept] = useState("");
+  const [fullname, SetFullName] = useState("");
+  const [matno, setMatNo] = useState("");
   const [faculty, SetFaculty] = useState("");
-  const [level, setLevel] = useState(Number);
+  const [dept, SetDept] = useState("");
+  const [level, setLevel] = useState(0);
   const [gender, setGender] = useState("");
-  const [Age, setAge] = useState(Date);
+  const [age, setAge] = useState(Date);
   const [mssg, setMssg] = useState("Use UpperCase only ");
-  const [areas, setAreas] = useState("");
+  
+  const allSkills = ["Full-Stark Web Development","Frontend Development","Backend Development","API Development","Graphics Design","Cyber-Security","Tech Journalism","App Development","Blockchain Development","Data Analysis","Vibe Coder","Others"]
 
-  axios.defaults.withCredentials = true;
+  const [skills, setSkills] = useState("");
+
+  // axios.defaults.withCredentials = true;
 
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
+     
       const response = await axios.post("http://localhost:9000/new/register", {
-        fullName,
-        matNo,
+        fullname,
+        matno,
         dept,
         faculty,
         level,
         gender,
-        Age,
+        age,
       });
 
       if (response.status) {
@@ -53,12 +58,13 @@ const Login = () => {
           <section className="logins">
             <h3>Please Fill The Form Below To Register</h3>
             <p>{mssg}</p>
+            
             <form onSubmit={handleRegistration}>
               <input
                 className="text"
                 type="text"
                 autoFocus="yes"
-                required
+                value={fullname}
                 placeholder="Full Name"
                 name="fullname"
                 onChange={(e) => SetFullName(e.target.value)}
@@ -67,6 +73,7 @@ const Login = () => {
                 className="text"
                 type="text"
                 required
+                value={matno}
                 placeholder="Mat No."
                 name="matno"
                 onChange={(e) => setMatNo(e.target.value)}
@@ -89,12 +96,23 @@ const Login = () => {
               />
               <select className="text" name="level" required id="">
                 <option value="">Class Level</option>
-                <option  onChange={(e) => setLevel(100)} value="100">100</option>
-                <option  onChange={(e) => setLevel(200)} value="200">200</option>
-                <option  onChange={(e) => setLevel(300)} value="300">300</option>
-                <option  onChange={(e) => setLevel(400)} value="400">400</option>
-                <option  onChange={(e) => setLevel(500)} value="500">500</option>
+                <option onFocus={(e) => setLevel(100)} value="100">
+                  100
+                </option>
+                <option onFocus={(e) => setLevel(200)} value="200">
+                  200
+                </option>
+                <option onFocus={(e) => setLevel(300)} value="300">
+                  300
+                </option>
+                <option onFocus={(e) => setLevel(400)} value="400">
+                  400
+                </option>
+                <option onFocus={(e) => setLevel(500)} value="500">
+                  500
+                </option>
               </select>
+
               <br />
               <label htmlFor="gender" className="gender" required>
                 What's your gender
@@ -133,7 +151,7 @@ const Login = () => {
               <input
                 type="checkbox"
                 className="box"
-                onChange={(e) => setAreas("Full-stark web development")}
+                onChange={(e) => setSkills("Full-stark web development")}
               />
               <label htmlFor="">Full-Stark Web Development</label>
               <br />
@@ -141,14 +159,14 @@ const Login = () => {
               <input
                 type="checkbox"
                 className="box"
-                onChange={(e) => setAreas("Frontend Development")}
+                onChange={(e) => setSkills("Frontend Development")}
               />
               <label htmlFor="">Frontend Development</label>
               <br />
 
               <input
                 type="checkbox"
-                onChange={(e) => setAreas("Backend")}
+                onChange={(e) => setSkills("Backend")}
                 className="box"
               />
               <label htmlFor="">Backend Development</label>
@@ -194,7 +212,7 @@ const Login = () => {
           </section>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

@@ -15,7 +15,7 @@ function HomePage() {
   return (
     <>
      <div className="overall-section1">
-
+      <h1>Welcome Lovelies</h1>
     
       <Footer />
      </div>
