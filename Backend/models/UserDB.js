@@ -33,6 +33,7 @@ const UserSchema = new mongoose.Schema(
     skills: {
       type: [String]
     },
+
   },
   { timstamps: true}
 );

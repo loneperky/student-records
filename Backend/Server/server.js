@@ -14,9 +14,9 @@ app.use(cors({
   credentials:true,
 }))
 
-app.use(cookieParser())
+
 app.use(express.json())
-app.use("/new",router)
+app.use("/api",router)
 
 //mongodb://localhost:27017
 

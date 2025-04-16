@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import HomePage from "./homePage";
 import ErrorPage from "./404";
 import Login from "./register";
 import StudentRecord from "./StudentRecord";
+import ShowStudent from "./show";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -14,11 +15,13 @@ function App() {
     
     <Router>
       <Navbar />
-      {/* <Analytics /> */}
+      {/* <SpeedInsights /> */}
+      <Analytics />
       <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        <Route path="/check/students" element={<StudentRecord/>} />
-        <Route path="/" element={ <Login /> }/>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/student/:matno" element={<ShowStudent />} />
+        <Route path="/new/check" element={<StudentRecord/>} />
+        <Route path="/register" element={ <Login /> }/>
         <Route path="/*" element={<ErrorPage />}/>
       </Routes>
     </Router>

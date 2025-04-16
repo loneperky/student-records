@@ -31,7 +31,7 @@ function Navbar(){
        <NavLink to="/">Home</NavLink> 
       </li>
      <li>
-       <NavLink to="/check/students">Check your Name</NavLink> 
+       <NavLink to="/new/check">Check your Name</NavLink> 
       </li>
       <li>
         <a href="https://wa.me/2349126785031?text=I%20Want%20To%20Hire%20A%20Developer" target='_blank'>Hire a Developer</a>
@@ -53,7 +53,7 @@ function Navbar(){
               </li>
              
               <li>
-                <Link to="/check/students"  onClick={Menu}>Check your Name</Link>
+                <Link to="/new/check/"  onClick={Menu}>Check your Name</Link>
               </li>
               <li>
               <a href="https://wa.me/2349126785031?text=I%20Want%20to%20Hire%20A%20Developer" target='_blank'>Hire a Developer</a>

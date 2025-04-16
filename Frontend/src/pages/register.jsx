@@ -145,6 +145,7 @@ const Login = () => {
                   name="age"
                   onChange={(e) => setAge(e.target.value)}
                   id=""
+                  placeholder="DOB"
                 />
               </label>
               <h3>Area Of Concentration</h3>
