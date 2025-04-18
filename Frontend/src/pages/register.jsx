@@ -12,8 +12,21 @@ const Login = () => {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState(Date);
   const [mssg, setMssg] = useState("Use UpperCase only ");
-  
-  const allSkills = ["Full-Stark Web Development","Frontend Development","Backend Development","API Development","Graphics Design","Cyber-Security","Tech Journalism","App Development","Blockchain Development","Data Analysis","Vibe Coder","Others"]
+
+  const allSkills = [
+    "Full-Stark Web Development",
+    "Frontend Development",
+    "Backend Development",
+    "API Development",
+    "Graphics Design",
+    "Cyber-Security",
+    "Tech Journalism",
+    "App Development",
+    "Blockchain Development",
+    "Data Analysis",
+    "Vibe Coder",
+    "Others",
+  ];
 
   const [skills, setSkills] = useState("");
 
@@ -22,8 +35,7 @@ const Login = () => {
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
-     
-      const response = await axios.post("http://localhost:9000/new/register", {
+      const response = await axios.post("http://localhost:8800/api/register", {
         fullname,
         matno,
         dept,
@@ -58,7 +70,7 @@ const Login = () => {
           <section className="logins">
             <h3>Please Fill The Form Below To Register</h3>
             <p>{mssg}</p>
-            
+
             <form onSubmit={handleRegistration}>
               <input
                 className="text"

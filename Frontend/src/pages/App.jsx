@@ -18,10 +18,9 @@ function App() {
       {/* <SpeedInsights /> */}
       <Analytics />
       <Routes>
-        <Route path="/" element={<HomePage />} />
         <Route path="/student/:matno" element={<ShowStudent />} />
         <Route path="/new/check" element={<StudentRecord/>} />
-        <Route path="/register" element={ <Login /> }/>
+        <Route path="/" element={ <Login /> }/>
         <Route path="/*" element={<ErrorPage />}/>
       </Routes>
     </Router>

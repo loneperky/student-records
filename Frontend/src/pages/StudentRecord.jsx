@@ -12,7 +12,7 @@ const StudentRecord = () => {
   useEffect(() => {
     const handleRecords = async () => {
       try {
-        const response = await axios.get("http://localhost:9000/api/all");
+        const response = await axios.get("http://localhost:8800/api/all");
         console.log(response);
         setStudents(response.data);
       } catch (error) {
@@ -24,7 +24,7 @@ const StudentRecord = () => {
   }, []);
 
   const SingleStudent = async () => {
-    const student = await axios.post("http://localhost:9000/api/student", {
+    const student = await axios.post("http://localhost:8800/api/student", {
       matno,
     });
     if (student) {
@@ -43,7 +43,7 @@ const StudentRecord = () => {
       <div className="table-overview">
         <div className="">
           <h2>Check For Your Name</h2>
-          {pupil && <h2>{pupil.fullname} is already registered</h2>}
+          {pupil && <h2>{pupil.fullname} has registered</h2>}
           <div className="search">
             <input
               type="text"
@@ -64,29 +64,26 @@ const StudentRecord = () => {
                 <th>Mat No.</th>
                 <th>Faculty</th>
                 <th>Department</th>
-                <th>Level</th>
                 <th>Gender</th>
                 <th>DOB</th>
-                <th>Skills</th>
               </tr>
             </thead>
             {/* //Iyare2468# */}
             <tbody>
-              {studensts.map((student) => {(
+              {studensts.map((student) => 
                 <tr key={student._id}>
                 <td>{student.fullname}</td>
                 <td>{student.matno}</td>
                 <td>{student.faculty}</td>
                 <td>{student.dept}</td>
-                <td>{student.level}</td>
                 <td>{student.gender}</td>
                 <td>{student.age}</td>
               </tr>
-              )})}
+              )}
             </tbody>
           </table>
           <p>
-            Can't find your name<Link to="/register"> Register</Link>
+            Can't find your name<Link to="/"> Register</Link>
           </p>
         </div>
       </div>
