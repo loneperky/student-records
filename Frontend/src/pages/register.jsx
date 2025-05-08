@@ -2,18 +2,21 @@ import React, { useState, useEffect } from "react";
 import "../styles/login.css";
 import Footer from "../Components/footer";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [fullname, SetFullName] = useState("");
   const [matno, setMatNo] = useState("");
   const [faculty, SetFaculty] = useState("");
   const [dept, SetDept] = useState("");
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState(Date);
+  const [selectedSkills, setSelectedSkills] = useState([]);
   const [mssg, setMssg] = useState("Use UpperCase only ");
 
-  const allSkills = [
+  const skillsList = [
     "Full-Stark Web Development",
     "Frontend Development",
     "Backend Development",
@@ -28,9 +31,21 @@ const Login = () => {
     "Others",
   ];
 
-  const [skills, setSkills] = useState("");
+  const handleChange = (event) => {
+    setLevel(event.target.value);
+  };
 
-  // axios.defaults.withCredentials = true;
+  const handleCheckboxChange = (event) => {
+    const skill = event.target.value;
+
+    setSelectedSkills((prevSelectedSkills) => {
+      if (prevSelectedSkills.includes(skill)) {
+        return prevSelectedSkills.filter((s) => s !== skill);
+      } else {
+        return [...prevSelectedSkills, skill];
+      }
+    });
+  };
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -43,16 +58,25 @@ const Login = () => {
         level,
         gender,
         age,
+        skills: selectedSkills,
       });
 
-      if (response.status) {
+      if (response) {
         setMssg("Record created successfully");
         console.log(response);
-        alert("Registration successful");
+        toast.success("Registration successful");
         window.scroll(0, 0);
+        SetFullName("");
+        setMatNo("");
+        SetFaculty("");
+        SetDept("");
+        setLevel(0);
+        setGender("");
+        setAge(Date);
+        setSelectedSkills([]);
       } else {
         setMssg("Could not create record");
-        alert("Registration failed");
+        toast.error("Registration failed");
       }
     } catch (error) {
       console.log(error, "there was an error");
@@ -66,11 +90,9 @@ const Login = () => {
   return (
     <>
       <div className="login-overview">
-        <div className="login-details">
+        
           <section className="logins">
-            <h3>Please Fill The Form Below To Register</h3>
             <p>{mssg}</p>
-
             <form onSubmit={handleRegistration}>
               <input
                 className="text"
@@ -106,23 +128,19 @@ const Login = () => {
                 name="dept"
                 onChange={(e) => SetDept(e.target.value)}
               />
-              <select className="text" name="level" required id="">
+              <select
+                className="text"
+                name="level"
+                required
+                id="level"
+                onChange={handleChange}
+              >
                 <option value="">Class Level</option>
-                <option onFocus={(e) => setLevel(100)} value="100">
-                  100
-                </option>
-                <option onFocus={(e) => setLevel(200)} value="200">
-                  200
-                </option>
-                <option onFocus={(e) => setLevel(300)} value="300">
-                  300
-                </option>
-                <option onFocus={(e) => setLevel(400)} value="400">
-                  400
-                </option>
-                <option onFocus={(e) => setLevel(500)} value="500">
-                  500
-                </option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
               </select>
 
               <br />
@@ -161,69 +179,22 @@ const Login = () => {
                 />
               </label>
               <h3>Area Of Concentration</h3>
-              <input
-                type="checkbox"
-                className="box"
-                onChange={(e) => setSkills("Full-stark web development")}
-              />
-              <label htmlFor="">Full-Stark Web Development</label>
-              <br />
-
-              <input
-                type="checkbox"
-                className="box"
-                onChange={(e) => setSkills("Frontend Development")}
-              />
-              <label htmlFor="">Frontend Development</label>
-              <br />
-
-              <input
-                type="checkbox"
-                onChange={(e) => setSkills("Backend")}
-                className="box"
-              />
-              <label htmlFor="">Backend Development</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">API Development</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Graphic Design</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Cyber Security Expert</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Tech Journalism</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">App Development</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Block-Chain Developement</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Data Analysis</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Vibe Coders</label>
-              <br />
-
-              <input type="checkbox" className="box" />
-              <label htmlFor="">Others</label>
-              <br />
+              {skillsList.map((skill) => (
+                <div key={skill}>
+                  <input
+                    type="checkbox"
+                    value={skill}
+                    style={{ marginLeft:"0.5rem" }}
+                    checked={selectedSkills.includes(skill)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label style={{padding:"0 0.5rem"}}>{skill}</label>
+                </div>
+              ))}
               <button>Register</button>
             </form>
           </section>
-        </div>
+
       </div>
       <Footer />
     </>

@@ -31,7 +31,8 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     skills: {
-      type: [String]
+      type: [String],
+      default: [],
     },
 
   },
