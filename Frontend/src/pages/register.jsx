@@ -46,11 +46,11 @@ const Login = () => {
       }
     });
   };
-
+  const API_URL = "https://student-records-yiz6.onrender.com"
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8800/api/register", {
+      const response = await axios.post(`${API_URL}/api/register`, {
         fullname,
         matno,
         dept,

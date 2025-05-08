@@ -57,23 +57,70 @@ span{
 }
 
 
-table{
-  display: grid;
-  grid-template-rows: 1fr;
-  min-width: 100wv;
-  border: 1px solid rgba(0, 0, 0, 0.741);
-  border-radius: 0.5rem;
+.table-container {
+  overflow-x: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
 }
-th,td{
-  border-bottom: 1px solid gray;
-  border-right: 1px solid gray;
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  min-width: 700px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-th{
-  padding: 0.5rem;
+
+.student-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
-td{
-  padding: 0.5rem;
-  border: 2px solid black;
+
+.student-table th,
+.student-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.student-table tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+.student-table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+  .student-table {
+    font-size: 13px;
+    min-width: 600px;
+  }
+
+  .student-table th,
+  .student-table td {
+    padding: 10px;
+  }
+
+  .table-container {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .student-table {
+    font-size: 12px;
+    min-width: 100%;
+  }
+
+  .student-table th,
+  .student-table td {
+    padding: 8px;
+  }
 }
 
 a:hover{

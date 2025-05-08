@@ -23,7 +23,9 @@ function Navbar(){
     <nav>
    
     <div className="logo">
+      <Link to="/">
         <h1>Osdin.net</h1>
+      </Link>
     </div>
 
     <ul className='menu-items'>
