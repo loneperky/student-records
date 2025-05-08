@@ -49,6 +49,11 @@ const Login = () => {
   const API_URL = "https://student-records-yiz6.onrender.com";
   const handleRegistration = async (e) => {
     e.preventDefault();
+    fullname.trim() 
+      matno.trim()
+      faculty.trim()
+      dept.trim()
+      level.trim()
     try {
       const response = await axios.post(`${API_URL}/api/register`, {
         fullname,
