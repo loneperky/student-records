@@ -46,7 +46,7 @@ const Login = () => {
       }
     });
   };
-  const API_URL = "https://student-records-yiz6.onrender.com"
+  const API_URL = "https://student-records-yiz6.onrender.com";
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
@@ -90,10 +90,11 @@ const Login = () => {
   return (
     <>
       <div className="login-overview">
-        
-          <section className="logins">
-            <p>{mssg}</p>
-            <form onSubmit={handleRegistration}>
+        <section className="logins">
+          <p>{mssg}</p>
+          <form onSubmit={handleRegistration}>
+            <div className="center">
+            <div className="">
               <input
                 className="text"
                 type="text"
@@ -142,59 +143,61 @@ const Login = () => {
                 <option value="400">400</option>
                 <option value="500">500</option>
               </select>
+            </div>
+            </div>
+            
 
-              <br />
-              <label htmlFor="gender" className="gender" required>
-                What's your gender
-              </label>
-              <br />
+            <br />
+            <label htmlFor="gender" className="gender" required>
+              What's your gender
+            </label>
+            <br />
+            <input
+              type="radio"
+              className="radio"
+              onChange={(e) => setGender("male")}
+              name="gender"
+              id=""
+            />
+            <label htmlFor="">Male</label>
+            <br />
+
+            <input
+              type="radio"
+              className="radio"
+              onChange={(e) => setGender("female")}
+              name="gender"
+              id=""
+            />
+            <label htmlFor="">Female</label>
+            <br />
+
+            <label htmlFor="" className="age">
+              Age:
               <input
-                type="radio"
-                className="radio"
-                onChange={(e) => setGender("male")}
-                name="gender"
+                type="date"
+                name="age"
+                onChange={(e) => setAge(e.target.value)}
                 id=""
+                placeholder="DOB"
               />
-              <label htmlFor="">Male</label>
-              <br />
-
-              <input
-                type="radio"
-                className="radio"
-                onChange={(e) => setGender("female")}
-                name="gender"
-                id=""
-              />
-              <label htmlFor="">Female</label>
-              <br />
-
-              <label htmlFor="" className="age">
-                Age:
+            </label>
+            <h3>Area Of Concentration</h3>
+            {skillsList.map((skill) => (
+              <div key={skill}>
                 <input
-                  type="date"
-                  name="age"
-                  onChange={(e) => setAge(e.target.value)}
-                  id=""
-                  placeholder="DOB"
+                  type="checkbox"
+                  value={skill}
+                  style={{ marginLeft: "0.5rem" }}
+                  checked={selectedSkills.includes(skill)}
+                  onChange={handleCheckboxChange}
                 />
-              </label>
-              <h3>Area Of Concentration</h3>
-              {skillsList.map((skill) => (
-                <div key={skill}>
-                  <input
-                    type="checkbox"
-                    value={skill}
-                    style={{ marginLeft:"0.5rem" }}
-                    checked={selectedSkills.includes(skill)}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label style={{padding:"0 0.5rem"}}>{skill}</label>
-                </div>
-              ))}
-              <button>Register</button>
-            </form>
-          </section>
-
+                <label style={{ padding: "0 0.5rem" }}>{skill}</label>
+              </div>
+            ))}
+            <button>Register</button>
+          </form>
+        </section>
       </div>
       <Footer />
     </>
