@@ -49,44 +49,58 @@ const Login = () => {
   const API_URL = "https://student-records-yiz6.onrender.com";
   const handleRegistration = async (e) => {
     e.preventDefault();
-    fullname.trim() 
-      matno.trim()
-      faculty.trim()
-      dept.trim()
-      level.trim()
+  
+    // Trim and clean up input values
+    const cleanedFullname = fullname.trim();
+    const cleanedMatno = matno.trim().toLowerCase();
+    const cleanedFaculty = faculty.trim();
+    const cleanedDept = dept.trim();
+    const cleanedLevel = level.trim();
+  
     try {
       const response = await axios.post(`${API_URL}/api/register`, {
-        fullname,
-        matno,
-        dept,
-        faculty,
-        level,
+        fullname: cleanedFullname,
+        matno: cleanedMatno,
+        dept: cleanedDept,
+        faculty: cleanedFaculty,
+        level: cleanedLevel,
         gender,
         age,
         skills: selectedSkills,
       });
-
-      if (response) {
+  
+      if (response.data) {
         setMssg("Record created successfully");
-        console.log(response);
         toast.success("Registration successful");
+        console.log(response);
+  
+        // Scroll to top and reset the form
         window.scroll(0, 0);
-        SetFullName("");
-        setMatNo("");
-        SetFaculty("");
-        SetDept("");
-        setLevel(0);
-        setGender("");
-        setAge(Date);
-        setSelectedSkills([]);
+  
+        // Reset form states in one call
+        setFormDefaults();
       } else {
         setMssg("Could not create record");
         toast.error("Registration failed");
       }
     } catch (error) {
-      console.log(error, "there was an error");
+      console.log("Error during registration:", error);
+      toast.error("An error occurred, please try again.");
     }
   };
+  
+  // Reset all form states
+  const setFormDefaults = () => {
+    SetFullName("");
+    setMatNo("");
+    SetFaculty("");
+    SetDept("");
+    setLevel(0);
+    setGender("");
+    setAge(Date);
+    setSelectedSkills([]);
+  };
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);

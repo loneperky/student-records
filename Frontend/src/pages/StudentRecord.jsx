@@ -16,8 +16,8 @@ const StudentRecord = () => {
         const response = await axios.get(`${API_URL}/api/all`);
         if (response) {
           setStudents(response.data);
-          toast
-        }else{
+          toast.success("Students data fetched successfully");
+        } else {
           toast.error("No records found");
         }
         console.log(response.data, "students data");
@@ -30,28 +30,47 @@ const StudentRecord = () => {
   }, []);
 
   const SingleStudent = async () => {
-    if (matno === "") {
+    const trimmedMatno = matno.trim().toLowerCase();  // Trim and convert to lowercase
+  
+    if (trimmedMatno === "") {
       toast.error("Please input your Mat No.");
       return;
     }
-    const student = await axios.post(`${API_URL}/api/student`, {
-      matno,
-    });
-    if (student.data === null) {
-      toast.error("No record found for this Mat No.");
-    } else {
-      setPupil(student.data);
-      console.log(student);
-      toast.success("Student record found");
+    if (trimmedMatno.length < 9) {
+      toast.error("Mat No. must be at least 9 characters long.");
+      return;
+    }
+  
+    try {
+      const response = await axios.post(`${API_URL}/api/student`, {
+        matno: trimmedMatno,
+      });
+  
+      // Check if response contains student data
+      if (!response.data || Object.keys(response.data).length === 0) {
+        toast.error("No record found for this Mat No.");
+        setPupil(null); // Set pupil to null if no student found
+        console.log(response.data, "student data not found");
+      } else {
+        setPupil(response.data);  // Set pupil data if found
+        toast.success("Student record found");
+        console.log(response.data);  // You can check the fetched data here
+      }
+    } catch (error) {
+      toast.error("Error fetching student record. Please try again.");
+      console.error("Error:", error);
     }
   };
+  
+  
 
   return (
     <>
       <div className="table-overview">
         <div className="">
           <h2>Check For Your Name</h2>
-          {pupil && <h2>{pupil.fullname} has registered</h2>}
+          {pupil ? <h2>{pupil.fullname} has registered</h2> : <h2>No student found</h2>}
+
           <div className="search">
             <input
               type="text"
@@ -95,7 +114,7 @@ const StudentRecord = () => {
             </table>
           </div>
 
-          <p style={{textAlign:"center", marginTop:"2rem"}}>
+          <p style={{ textAlign: "center", marginTop: "2rem" }}>
             Can't find your name<Link to="/"> Register</Link>
           </p>
         </div>

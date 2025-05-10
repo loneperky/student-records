@@ -36,12 +36,20 @@ router.get("/all", async (req, res) => {
 
 router.post("/student", async (req, res) => {
   const { matno } = req.body;
-  const student = await StudentDB.findOne({ matno });
-  if (student) {
-    return res.json(student);
-  } else {
-    return res.json(student);
+  
+  try {
+    const student = await StudentDB.findOne({ matno });
+
+    if (student) {
+      return res.json(student); // Return student data if found
+    } else {
+      return res.status(404).json({ message: "No record found for this Mat No." }); // Return a 404 error with a message
+    }
+  } catch (error) {
+    console.error("Error fetching student:", error);
+    return res.status(500).json({ message: "Error fetching student record." }); // Return a 500 error if there is an issue
   }
 });
+
 
 export { router };
